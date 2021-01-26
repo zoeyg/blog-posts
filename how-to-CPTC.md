@@ -17,7 +17,7 @@ At some point it might be interesting to take all of the data from this and prev
 
 In addition to what's in this document, there will be new exploits that come out over time. Do your best to keep track of them and learn them. One of the best ways to do that is likely via twitter. Get an account if you don't already have one, and start following people in cybersecurity.
 
-I've done my best to organize the tools into various categories, but there's probably quite a few tools that can be in multiple categories.
+I've done my best to organize the tools into various categories, but there's probably quite a few tools that could be in multiple categories.
 
 ### Remote Scanning/Enumeration
 
@@ -251,3 +251,5 @@ If you manage to make it to globals, you’ll have a decent idea about what’s 
 # Have Fun and Good Luck!
 
 Most of all, have a good time and learn something. That’s what it’s all about anyways, and share your hard earned wisdom with the teams that will come after you.
+
+_January 2020_
