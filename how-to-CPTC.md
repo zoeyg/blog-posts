@@ -1,7 +1,7 @@
 # How to CPTC
 
 A few weeks ago I had the opportunity to compete in the [Global Collegiate Penetration Testing Competition](https://globalcptc.org/) with a team of classmates
-from City College of San Francisco. We had high hopes going into it, as we had [won the western regionals](https://twitter.com/nationalcptc/status/1320524078768377857) a couple months prior, beating out the previous year's national gold and bronze medal winners. But alas, we weren't able to pull off a top 3 placement. We were, however, told we were in the top third out of 15 teams, and went home(well, I guess technically none of us ever actually left home, COVID, ugh) with the ["Most Professional" award](https://twitter.com/nationalcptc/status/1348376842332479488). Not bad for a community college that doesn't have the benefit of 4 years in which the more experienced team members are able to pass on their wisdom to the newer team members. After the competition, in an attempt to help close the gap, I drew up some documentation in an attempt to pass on some of the knowledge and wisdom that we had gained to future team members. Then I decided there may be others who might benefit from it, and thus, the document was adapted into this blog post.
+from City College of San Francisco. We had high hopes going into it, as we had [won the western regionals](https://twitter.com/nationalcptc/status/1320524078768377857) a couple months prior, beating out the previous year's national gold and bronze medal winners. But alas, we weren't able to pull off a top 3 placement. We were, however, told we were in the top third out of 15 teams, and went home(well, I guess technically none of us ever actually left home, COVID, ugh) with the ["Most Professional" award](https://twitter.com/nationalcptc/status/1348376842332479488). Not bad for a community college that doesn't have the benefit of 4 years in which the more experienced team members are able to compete many times, and pass on their wisdom to the newer team members. After the competition, in an attempt to help close the gap, I drew up some documentation in an attempt to pass on some of the knowledge and wisdom that we had gained to future team members. Then I decided there may be others who might benefit from it, and thus, the document was adapted into this blog post.
 
 # Preparing
 
@@ -17,7 +17,7 @@ At some point it might be interesting to take all of the data from this and prev
 
 In addition to what's in this document, there will be new exploits that come out over time. Do your best to keep track of them and learn them. One of the best ways to do that is likely via twitter. Get an account if you don't already have one, and start following people in cybersecurity.
 
-I've done my best to organize the tools into various categories, but there's probably quite a few tools that could be in multiple categories.
+I've done my best to organize the tools into various categories, but there's probably quite a few tools that could be in multiple places.
 
 ### Remote Scanning/Enumeration
 
@@ -42,7 +42,7 @@ You'll need to know a lot of tools in order to discover services running on open
 
 ### Remote Exploitation
 
-Once you've identified the available services and pulled as much information as you can, you're going to want to find and run remote exploits.  If you've got the name and version of the software, start looking for existing exploits/CVEs, check for default credentials, check for lockouts and start trying to brute-force(see next section). Google is your friend.
+Once you've identified the available services and pulled as much information as you can, you're going to want to find and run remote exploits.  If you've got the name and version of the software, start looking for existing exploits/CVEs, check for default credentials, check for lockouts and start trying to brute-force(see other section). Google is your friend.
 
 #### Tools/Resources
 
@@ -52,9 +52,9 @@ Once you've identified the available services and pulled as much information as 
 *   **ftp** - Know how to do anonymous login and list and download files
 *   **[impacket](https://github.com/SecureAuthCorp/impacket)** - This is a whole suite of tools used for various things against windows, but has some specific tools that can help with gaining a foothold
     *   **GetNPUsers.py** - Impacket script for asrep roasting
-*   **mysql** - Command line tool for accessing mariadb/mysql databases. There's likely something similar for postgres.
+*   **mysql** - Command line tool for accessing mariadb/mysql databases
 *   **redis-cli** - For interacting with redis, though netcat can also work as well
-*   **sqlmap** - Automatic sql injection and mapping
+*   **[sqlmap](http://sqlmap.org/)** - Automatic sql injection and mapping
 *   **[metasploit](https://www.metasploit.com/)** - Usually comes preinstalled on pentesting dists, has lots of exploits for known vulnerabilities, and has facilities for setting up listeners for remote shells
     *   **msfvenom** - Part of metasploit, used to create all types of payloads.  Particularly good for creating reverse shell binaries for windows
 *   **[reverse shell cheat sheet](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)** - Good set of reverse shells for use with RCE payloads
@@ -79,7 +79,7 @@ In certain cases you may run across custom software that the CPTC team has writt
 
 ### Brute-forcing/Cracking
 
-You'll want to know how to brute-force most network protocols, as well as crack hashes when you run across them, or extract them from a database.  A lot of time you'll also be trying to enumerate some kind of resource like usernames, or web server paths, and not just brute-forcing logins.  Possibly the most important protocols to know how to brute-force: kerberos, samba, windows RPC, windows remote management, ssh, remote desktop, and http(s) protocol web logins.  Various database protocols might be important as well.
+You'll want to know how to brute-force a number of network protocols, as well as crack hashes when you run across them, or extract them from a database.  A lot of the time you'll also be trying to enumerate some kind of resource like usernames, or web server paths, and not just brute-forcing logins.  Possibly the most important protocols to know how to brute-force: kerberos, samba, windows RPC, windows remote management, ssh, remote desktop, and http(s) protocol web logins.  Various database protocols might be important as well.
 
 #### Tools/Resources
 
@@ -108,6 +108,7 @@ Once you've got a lower privileged shell on a box, you'll want to enumerate the 
 *   **[PayloadsAllTheThings Windows PrivEsc](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)** - Cheat sheet for windows privesc
 *   **[static binaries](https://github.com/andrew-d/static-binaries)** - Sometimes the linux system tools you want are not on the remote box.  Most of the tools have a bunch of dependencies as well.  This is why you want statically compiled versions with all the dependencies in a single binary.
 *   **[secretsdump.py](https://medium.com/@benichmt1/secretsdump-demystified-bfd0f933dd9b)** - For dumping various hashes that can be cracked or used with pass the hash, part of impacket
+*   **[dsacls](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc771151(v=ws.11))** - "Displays and changes permissions (access control entries) in the access control list (ACL) of objects in Active Directory Domain Services"
 
 ### Remote Administration/Pivoting
 
@@ -131,15 +132,17 @@ My knowledge here is admittedly lacking, but you should have a basic understandi
 
 *   type - windows version of cat
 *   dir /adh - list hidden files
-*   > file redirects and | piping
+*   redirects > and | piping, tee
 *   find some cheat sheets
-*   dacls - was this the thing for going through access control lists?
 *   whoami /priv or /group
 *   ipconfig /all
 
 #### Important Files/Directories
 
-*   [https://book.hacktricks.xyz/pentesting-web/file-inclusion#windows](https://book.hacktricks.xyz/pentesting-web/file-inclusion#windows)
+*   C:\Users\username\ - user home directories
+*   C:\Users\username\AppData - user application data
+*   C:\Windows\System32\Config\ - contains various files with registry data
+*   [https://book.hacktricks.xyz/pentesting-web/file-inclusion#windows](https://book.hacktricks.xyz/pentesting-web/file-inclusion#windows) - list of files to check when you've got a local file inclusion exploit
 
 ### Linux
 
@@ -147,23 +150,24 @@ You should have a basic understanding of the linux directory structure, permissi
 
 #### Commands
 
-*   | pipes &lt; and > >> redirection, stdin, stdout, stderr
+*   pipes |, &lt;, >, and >> redirection, stdin, stdout, stderr
 *   cat
 *   base64 -d - decode base64 on the command line
 *   pwd - get current directory
-*   `command` $(substitution)
+*   `` `command` `` $(substitution) - also useful for command injection at times
 *   export ENV_VARS=value
 *   difference between ' and "
 *   ifconfig - network interface information
 *   uname -a - os/kernel info
 *   lsb_release -a - dist info
-*   ss -pant - list processed with open ports
+*   ss -pant - list processes with open ports
 *   ip a - show current ip addresses
-*   id/whoami - find out which account you're under
+*   id/whoami - find out which account you're using
 *   find - find files
 *   grep - search inside files
 *   sed - replace contents in files
-*   tmux - allows you to easily turn one terminal window into multiple
+*   tmux - allows you to easily turn one terminal window into multiple, as well as detach from a session and reconnect
+*   tee - both redirect to file and stdout
 *   sudo
 
 #### Important Files/Directories
@@ -181,11 +185,11 @@ You should have a basic understanding of the linux directory structure, permissi
 *   /home/user - home directories for users, not always properly locked down
 *   ~/.bash_history - command history
 *   ~/.ssh/id_rsa - private key, may allow ssh access to other machines
-*   [https://book.hacktricks.xyz/pentesting-web/file-inclusion/lfi-linux-list](https://book.hacktricks.xyz/pentesting-web/file-inclusion/lfi-linux-list)
+*   [https://book.hacktricks.xyz/pentesting-web/file-inclusion/lfi-linux-list](https://book.hacktricks.xyz/pentesting-web/file-inclusion/lfi-linux-list) - list of files to check when you've got a local file inclusion exploit
 
 ### Best Practices/Hardening
 
-Learn best practices and hardening for a corporate network and windows active directory setup.  Separation of concerns into subnets, separated by firewalls, using encrypted transports, a certificate authority, up to date hashing and encryption algorithms, multi-factor authentication, enforced password strength policy, incremental lockout to prevent brute-forcing, logging/monitoring/splunk, IDS/IPS, etc...
+Learn best practices and hardening for a corporate network and windows active directory setup.  Separation of concerns into subnets, separated by firewalls, using encrypted transports, certificate authorities and signing, up to date hashing and encryption algorithms, multi-factor authentication, enforced password strength policy, incremental lockout to prevent brute-forcing, logging/monitoring/splunk, IDS/IPS, etc...
 
 ### Coding
 
@@ -193,11 +197,11 @@ Knowing how to code in at least one language will be immensely helpful. Python w
 
 ### Industry Specific Regulation
 
-CPTC generally has a theme/industry, and you're going to want to research what industry specific regulations the company is going to care about. As an example, this year the competition was pentesting for a power company. We spent a fair amount of time researching the NERC CIP regulations and how certain common issues might violate certain regulations. Having this information in your report will really drive home the business impact.
+CPTC generally has a theme/industry, and you're going to want to research what industry specific regulations the company is going to care about. As an example, this year the competition was pentesting a power company. We spent a fair amount of time researching the NERC CIP regulations and how certain common issues might violate certain regulations. Having this information in your report will really drive home the business impact. Looking up what businesses have been fined for violations might be helpful as well when it comes to explaining business impact.
 
 ## How to Practice
 
-HackTheBox, Vulnhub, and TryHackMe are some great options.  We predominantly used HackTheBox for practice, but early on did some TryHackMe as it has more introductory content, though that seems to be changing. Checkout the tracks on HackTheBox as they divide up some of the boxes into topics for learning. The Active Directory track on HTB was rather helpful in regards to learning some windows pentesting.  The Dante Pro Lab was helpful as well, and is a good approximation of CPTC, though is actually probably harder in a number of respects since I don't think it's designed to be finished in one or two 8 hour sessions.  If you can get through the entirety of that Pro Lab you're probably gonna be pretty well prepared. We attempted to practice at least once a week, and sometimes twice in the weeks before globals.
+HackTheBox, Vulnhub, and TryHackMe are some great options. [CTFs](https://ctftime.org/) can be good for learning how to exploit web applications.  We predominantly used HackTheBox for practice, but early on did some TryHackMe as it has more introductory content, though that seems to be changing. Checkout the tracks on HackTheBox as they divide up some of the boxes into topics for learning. The Active Directory track on HTB was rather helpful in regards to learning some windows pentesting.  The Dante Pro Lab was helpful as well, and is a good approximation of CPTC, though is actually probably harder in a number of respects since I don't think it's designed to be finished in one or two 8 hour sessions.  If you can get through the entirety of that Pro Lab you're probably gonna be pretty well prepared. If you ever get stuck on boxes, there are options for hints. For a lot of the retired boxes, there are various writeups available.  For active boxes, checkout the HackTheBox discord, and be prepared to list what you've already tried while you ask nicely for a nudge.
 
 As you're going through different boxes, **make sure to keep notes as you go through them**.  If you're unable to document and explain how you were able to compromise something it won't really matter that you were able to get in.  It's obviously not required for HackTheBox, but it's also good to think about steps to mitigate the vulnerability.  What could be changed to prevent it and harden/secure the application/service/box. You can also draw from your notes later to create cheat sheets for different tools. As an aside, you could also turn these writeups into blog posts and post them to your personal blog/site. Potential employers will then know you have experience with certain things 😉.
 
@@ -215,11 +219,11 @@ There’s usually a public website for the company, LinkedIn profiles, Github, e
 
 Make sure to have an initial plan of how to proceed. You're probably going to want to install some things on the boxes they provide for you. Docker is pretty useful in that you don't have to worry about dependencies or configuration. There's going to be a set of scans you'll want to run regardless of the setup so have those ready to go.
 
-Periodically during the competition you're probably going to want to take a step back and discuss current progress as a team and what everyone is working on/has found. It probably can't hurt to have the team lead or person with the most experience decide which rabbit holes are worth it to go down. Play to your individual strengths and communicate about who is doing what. Take short breaks to eat and clear your head.
+Periodically during the competition you're probably going to want to take a step back and discuss current progress as a team and what everyone is working on/has found. It probably can't hurt to have the team lead or person with the most experience decide which rabbit holes are worth going down. Play to your individual strengths and communicate about who is doing what. Take short breaks to eat and clear your head, particularly if you've been working for a while and not making much progress.
 
-It's easier to ask permission than forgiveness. If you're worried you might break something that's out of scope, cause a natural disaster, lock someone out of an account, or reset someone's password, be sure to message the company's team and ask if you can do it first. You'll get points off if you don't. If you do break something, own up to it as quickly as possible.  If you're asked if you broke something, definitely don't lie about it, and if you're not sure, say so and that you need a bit of time to converse with the team and look into details.  If you find something that's very critical and should be fixed immediately, this is another good opportunity to message the company rather than wait and put it in the findings.
+When it comes to CPTC, it's easier to ask permission than forgiveness. If you're worried you might break something that's out of scope, cause a natural disaster, lock someone out of an account, or reset someone's password, be sure to message the company's team and ask if you can do it first. You'll get points off if you don't. If you do break something, own up to it as quickly as possible.  If you're asked if you broke something, definitely don't lie about it, and if you're not sure, say so and that you need a bit of time to converse with the team and look into details.  If you find something that's of critical importance and should be fixed immediately, this is another good opportunity to message the company rather than wait and put it in the findings.
 
-Keep detailed notes as you go and document as much as possible with screenshots or saved text files.  You'll need it for the report, and the more detailed and ready your notes are to drop into the final document, the more time you'll have to optimize/improve the report. Make sure the screenshots are clear and uncluttered. Having a proof of concept where you show RCE is better than just an nmap scan that says it should be possible.  We used google docs during the competition as that was what's provided, but something like running an instance of [CTFNote](https://github.com/TFNS/CTFNote) on one of the jump boxes and having everyone access it might be a good idea. Maybe try it out during practice. Dockerizing it might be the best way to do it. There may be other alternatives as well. Be sure to keep track of even low impact smaller things like an http server not having X-Frame-Options or a Content Security Policy, as they are worth something.  Having things pre-written for these low priority findings might be free points.
+Keep detailed notes as you go and document as much as possible with screenshots or saved text files.  You'll need it for the report, and the more detailed and ready your notes are to drop into the final document, the more time you'll have to optimize/improve the report. Make sure the screenshots are clear and uncluttered. Having a proof of concept where you show RCE is better than just an nmap scan that says it should be possible.  We used google docs during the competition as that's what was provided, but something like running an instance of [CTFNote](https://github.com/TFNS/CTFNote) on one of the jump boxes and having everyone access it might be a good idea. Maybe try it out during practice. Dockerizing it might be the best way to do it. There may be other alternatives as well. Be sure to keep track of even low impact smaller things like an http server not having X-Frame-Options or a Content Security Policy, as they are worth something.  Having something pre-written for these kinds of low priority findings might be free points.
 
 ## Injects
 
@@ -227,11 +231,11 @@ Be sure to do all these and that you send them where they're supposed to go. Des
 
 ## The Report
 
-There are [some examples from 2019](https://github.com/nationalcptc/report_examples), but looking at our previous reports from 2020 and replicating their format is likely a good option as we got rather positive feedback on our reports, and won the regionals, which was only based on the report and technical scores(no injects or presentation). The organizers also wrote a [letter to competitors](https://github.com/nationalcptc/report_examples/blob/master/2019/letter%20to%20competitors.pdf) in 2019 with a list of dos and don’ts for report writing.  Have a template ready to go that you can drop your content into will save you a lot of time.
+There are [some examples from 2019](https://github.com/nationalcptc/report_examples), and the 2020 examples will likely be released soon enough, but looking at  previous reports and replicating their format is likely a good option. The organizers also wrote a [letter to competitors](https://github.com/nationalcptc/report_examples/blob/master/2019/letter%20to%20competitors.pdf) in 2019 with a list of dos and don’ts for report writing.  Having a template ready to go that you can drop your content into will save you a lot of time.
 
 Our kill chain diagram is something that [was really well received](http://lockboxx.blogspot.com/2021/01/cptc-2020-finals-review.html), and wasn't done by any other team. It's basically a graphical flow chart that summarizes the pentest and the techniques that were used to jump from box to box. Given the blog post, this might show up in other teams' reports in the future.
 
-Make sure the reproduction steps are detailed enough for an engineer or security employee to easily replicate the finding.  Be sure to include even low impact findings that might show up in scans, like missing headers on a web server, or old crypto, as they're worth points, but prioritize getting more critical findings into the report if you've got limited time.
+Make sure the reproduction steps are detailed enough for an engineer or security employee to easily replicate the finding.  Be sure to include even low impact findings that might show up in scans, as they're worth points, but prioritize getting more critical findings into the report if you've got limited time.
 
 ## Presentation
 
@@ -246,10 +250,10 @@ A couple general points made during our debrief that were given as positives, bu
 
 # After/Between Competitions
 
-If you manage to make it to globals, you’ll have a decent idea about what’s going to be in the environment and can focus your practice toward learning about those specific things. If there was any open source software in use, you can actually take time to audit it in between competitions. If you were unable to exploit something during the competition, take some additional time to lookup potential exploits, misconfigurations, and possible mitigations. Maybe you’ll get lucky and find a 0day. Check hackerone and other bug bounty sites for recent reports on software that you know is a part of their system. Do OSINT again to check and see if anything has changed.
+If you manage to make it to globals, you’ll have a decent idea about what’s going to be in the environment and can focus your practice toward learning about those specific things. If there was any open source software in use, you can actually take time to audit it in between competitions. Maybe you’ll get lucky and find a 0day. If you were unable to exploit something during the competition, take some additional time to lookup potential exploits, misconfigurations, and possible mitigations. Check hackerone and other bug bounty sites for recent reports on software that you know is a part of their system. Do OSINT again to check and see if anything has changed.
 
 # Have Fun and Good Luck!
 
-Most of all, have a good time and learn something. That’s what it’s all about anyways, and share your hard earned wisdom with the teams that will come after you.
+Most of all, have a good time and learn something. That’s what it’s all about anyways, and be sure to share your hard earned wisdom with the teams that will come after you.
 
 _January 2020_
