@@ -239,7 +239,7 @@ Make sure the reproduction steps are detailed enough for an engineer or security
 
 ## Presentation
 
-Everyone has to speak, and you've gotta fit the presentation into basically 7 minutes as you need to _be sure to leave 30% of your time for questions_.  Had we been to nationals before, we might have known this, but had no idea this was a requirement until the debrief, after everything was over, when they told us we lost points for it. You basically want to leave time for the board _to get in at least two questions_.
+Everyone has to speak, and you've gotta fit the presentation into basically 7-8 minutes as you need to _be sure to leave 20-30% of your time for questions_.  Had we been to nationals before, we might have known this, but had no idea this was a requirement until the debrief, after everything was over, when they told us we lost points for it. You basically want to leave time for the board _to get in at least two questions_.
 
 Don't get too overly technical, but do your best to tie in your findings to an overall, bigger picture for the execs. Be sure to talk about _overall security posture_ and specifics about _how to move forward_. Cater to the audience; learn about the specific industry and what they're worried about or should be worried about.
 
@@ -247,10 +247,10 @@ The organizers also recently released the [top 3 presentations from 2020](https:
 
 # After/Between Competitions
 
-If you manage to make it to globals, you’ll have a decent idea about what’s going to be in the environment and can focus your practice toward learning about those specific things. If there was any open source software in use, you can actually take time to audit it in between competitions. Maybe you’ll get lucky and find a 0day. If you were unable to exploit something during the competition, take some additional time to lookup potential exploits, misconfigurations, and possible mitigations. Check hackerone and other bug bounty sites for recent reports on software that you know is a part of their system. Do OSINT again to check and see if anything has changed.
+If you manage to make it to globals, you’ll have a decent idea about what’s going to be in the environment and can focus your practicing toward learning about those specific topics. If there was any open source software in use, you can actually take time to audit it in between competitions. Maybe you’ll get lucky and find a 0day. If you were unable to exploit something during the competition, take some additional time to lookup potential exploits, misconfigurations, and possible mitigations. Check hackerone and other bug bounty sites for recent reports on software that you know is a part of their system. Do OSINT again to check and see if anything has changed.
 
 # Have Fun and Good Luck!
 
-Most of all, have a good time and learn something. That’s what it’s all about anyways, and be sure to share your hard earned wisdom with the teams that will come after you.
+Most of all, have a good time and learn something. That’s what it’s all about anyways, and be sure to share your hard earned wisdom with the people that come after you.
 
 _January 2020_
