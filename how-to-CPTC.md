@@ -243,12 +243,7 @@ Everyone has to speak, and you've gotta fit the presentation into basically 7 mi
 
 Don't get too overly technical, but do your best to tie in your findings to an overall, bigger picture for the execs. Be sure to talk about _overall security posture_ and specifics about _how to move forward_. Cater to the audience; learn about the specific industry and what they're worried about or should be worried about.
 
-A couple general points made during our debrief that were given as positives, but don't have an effect on the score directly:
-
-*   Have an initial summary slide so if people end up having to leave in the middle of your presentation they can
-*   Have a conclusion slide so you can skip forward if you're running short on time
-
-The organizers also recently released the [top 3 presentations from 2020](https://www.youtube.com/playlist?list=PL16dKj3xTAakLEnX3xTydXsZiHC5Hpj4S), and you can look to those for pointers.
+The organizers also recently released the [top 3 presentations from 2020](https://www.youtube.com/playlist?list=PL16dKj3xTAakLEnX3xTydXsZiHC5Hpj4S), and a [blog post](http://lockboxx.blogspot.com/2021/01/cptc-better-board-presentations.html) going into detail about what they thought.
 
 # After/Between Competitions
 
